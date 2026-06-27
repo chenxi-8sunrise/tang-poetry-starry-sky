@@ -1,0 +1,15 @@
+{
+  "name": "tang-poetry-starry-sky",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "start": "vite --host 127.0.0.1"
+  },
+  "dependencies": {
+    "react": "18.3.1",
+    "react-dom": "18.3.1",
+    "three": "0.166.1",
+    "vite": "6.4.3"
+  }
+}
