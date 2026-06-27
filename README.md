@@ -1,37 +1,39 @@
-# Arsenal XI Forge
+# 唐诗星空
 
-A static Arsenal lineup generator with a game-like squad score, animated pitch UI, public player-list loading, and Wikipedia thumbnail fallback for player faces.
+交互式网页项目：每颗星代表一首唐诗，星点从公开《全唐诗》JSON 数据渐进加载。
 
-## Run
+## 运行
 
 ```bash
 npm install
 npm start
 ```
 
-Default local URL:
+默认地址：
 
 ```text
 http://127.0.0.1:5173
 ```
 
-## Data Scope
+如果端口被占用，Vite 会自动尝试下一个端口。
 
-- Men's first-team competitive Arsenal players from the Arsene Wenger era onward.
-- Live data loads from public Wikipedia player-list tables:
-  - 100+ appearances
-  - 25-99 appearances
-  - 1-24 appearances
-- If the live request fails, the app falls back to a representative offline seed.
-- Assists are shown as `N/A` until a reliable all-competitions assist source is added.
+## 数据源
 
-## Scoring
+数据来自 `chinese-poetry/chinese-poetry` 的《全唐诗》目录：
 
-Squad score is capped at 100 and uses:
+- `poet.tang.[0-57000].json`
+- 每个 JSON 文件约 1000 首诗
+- 字段使用 `author`、`title`、`paragraphs`
 
-- Base Ability: 40
-- Arsenal Contribution: 25
-- Honours Bonus: 20
-- Position Fit: 15
+页面会优先从 GitHub Raw 拉取数据，失败时尝试 jsDelivr CDN；如果公开数据源暂不可达，会显示少量本地样例数据。
 
-The final squad score is the average of the selected XI plus a formation-fit bonus.
+## 星图规则
+
+- 每颗星：一首诗
+- 悬停内容：诗名、作者、首句
+- 点击内容：完整诗歌
+- 颜色：主题关键词推断
+- 大小：正文汉字数量
+- 位置：主题扇区、朝代阶段纵向层级、篇幅半径
+- 诗体：按句数与每句字数推断
+- 朝代阶段：按常见作者映射；无法判断时为“未分期”
